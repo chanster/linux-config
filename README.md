@@ -2,9 +2,7 @@
 
 ## Introduction
 
-This document provides the items installed on a new linux configuration. I use a minimal Ubuntu server as a starting point. We install applications and tools under the user where we can and when most convenient.
-
-We use container technology to keep the underlying system free from pacakge bloat.
+This document provides the pacakges installed on a new linux configuration focused on clean, containerized desktop. I use a minimal Ubuntu server as a starting point. I install packages under my user when I can and use container technology to keep the underlying system free from pacakge bloat.
 
 ### Assumptions
 - Starting with a Ubuntu minimal server install
@@ -14,6 +12,8 @@ We use container technology to keep the underlying system free from pacakge bloa
 - Knowledge of environment variables, permissions and file structure
 
 ### User Locations 101
+
+A list of locations and paths to know about.
 
 | Item | Location | Notes |
 |---:|:---:|:---|
@@ -36,42 +36,54 @@ We use container technology to keep the underlying system free from pacakge bloa
 
 ## Desktop Manager
 
+Because we will install **Gnome Shell**, **GDM** is required to get a lock screen.
+
 ```
 sudo apt install -y gdm3
 ```
 
-Because we will install **Gnome Shell**, **GDM** is required to get a lock screen.
-
 ## Desktop Environment
+
+### Gnome Shell
+
+Install just the base **Gnome Shell** without all the extras.
+
+```
+sudo apt install -y --no-install-recommends gnome-shell
+```
+
+Now install other packages to get a good basic desktop.
 
 ```
 sudo apt install -y \
-    --no-install-recommends \
-    xorg gnome-session gnome-shell gnome-tweak-tool \
-    nautilus \
-    seahorse seahorse-natalius
+    xorg gnome-session \
+    gnome-tweak-tool nautilus seahorse seahorse-natalius
 ```
 
-### Gnome Shell 
+You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**.
 
 #### Extensions
 
 I do not recommend using the apt packages for gnome extensions, they are almost all broken and the useful ones are not even in the apt repositories.
 
+- (Gnome Extension Website)[https://extensions.gnome.org/]
+
 Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`. The `${UUID}` can be found in the extension's `metadata.yml` file.
+
+You can get the version of **Gnome Shell** you are running with `gnome-shell --version`.
 
 | Extension | Notes |
 |---:|:---|
-| User themes | Allows user themes in in `~/.local/share/themes` |
-| Top indicator app | App notifications in top bar |
-| Dash to Dock | OSX like application dock |
-| Hide top bar | Allow top bar to hide |
-| Openweather | Weather in the top bar |
-| Screenshot tool | Screenshot via a top bar dropdown |
-| Sound Input & output device chooser | Switch audio devices right from top bar |
-| Bluetooth quick connect | Connect to bluetooth devices right from top bar |
-| Cast to tv | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node |
-| Cast to tv - desktop stream add-on | Add-on to allow you yo cast your desktop |
+| User themes | Allows user themes in in `~/.local/share/themes`. |
+| Top indicator app | App notifications in top bar. |
+| Dash to Dock | OSX like application dock. |
+| Hide top bar | Allow top bar to hide. |
+| Openweather | Weather in the top bar. |
+| Screenshot tool | Screenshot via a top bar dropdown. |
+| Sound Input & output device chooser | Switch audio devices right from top bar. |
+| Bluetooth quick connect | Connect to bluetooth devices right from top bar. |
+| Cast to tv | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
+| Cast to tv - desktop stream add-on | Add-on to allow you yo cast your desktop. |
 
 ## Application Management
 
@@ -100,9 +112,11 @@ flatpak --user install ${REPO} ${APP_ID}
 
 | App | Repo | ID | Notes |
 |:---:|:---:|:---|:---|
-| `Flatseal` | `flathub` | `com.github.tchx84.Flatseal` | Permission control of flatkpak installed applications |
-| `LibreOffice` | `flathub` | `org.libreoffice.LibreOffice` | Office suite |
-| `VLC` | `flathub` | `org.videolan.VLC` | Video Player |
+| Flatseal | `flathub` | `com.github.tchx84.Flatseal` | Permission control of flatkpak installed applications |
+| LibreOffice | `flathub` | `org.libreoffice.LibreOffice` | Office suite |
+| VLC | `flathub` | `org.videolan.VLC` | Video Player |
+| Krita | `flathub` | `org.kde.krita` | Photo Editor |
+| Lutris | `flathub-beta` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
 
 ### CLI Tools
 
@@ -121,6 +135,21 @@ apt install -y zsh
 ```
 
 Use Oh-my-zsh for collaborative configuration.
+
+### Nove Version Manger (nvm)
+
+Ubuntu comes with an old version of Node and does not follow the node convensions because of backwards compatibility with a different package also named `node`.
+
+Use the (official documentation)[https://github.com/nvm-sh/nvm] to install `nvm`.
+
+Once installed, setup the default node to the current LTS
+
+```
+nvm ls-remote --lts
+# locate the latest LTS
+nvm install ${LTS_NAME}
+nvm default ${LTS_NAME}
+```
 
 ### Misc
 
