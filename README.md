@@ -41,20 +41,22 @@ sudo apt install -y \
 
 #### Extensions
 
-Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`
+I do not recommend using the apt packages for gnome extensions, they are almost all broken and the useful ones are not even in the apt repositories.
 
-The `${UUID}` can be found in the extension's `metadata.yml` file.
+Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`. The `${UUID}` can be found in the extension's `metadata.yml` file.
 
-- User themes
-- Top indicator app
-- Dash to Dock
-- Hide top bar
-- Openweather
-- Screenshot tool
-- Sound Input & output device chooser
-- Bluetooth quick connect
-- Cast to tv
-- Cast to tv - desktop stream add-on
+| Extension | Notes |
+|---:|:---|
+| User themes | Allows user themes in in `~/.local/share/themes` |
+| Top indicator app | App notifications in top bar |
+| Dash to Dock | OSX like application dock |
+| Hide top bar | Allow top bar to hide |
+| Openweather | Weather in the top bar |
+| Screenshot tool | Screenshot via a top bar dropdown |
+| Sound Input & output device chooser | Switch audio devices right from top bar |
+| Bluetooth quick connect | Connect to bluetooth devices right from top bar |
+| Cast to tv | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node |
+| Cast to tv - desktop stream add-on | Add-on to allow you yo cast your desktop |
 
 ## Application Management
 
