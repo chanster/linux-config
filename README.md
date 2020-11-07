@@ -11,6 +11,21 @@ We use container technology to keep the underlying system free from pacakge bloa
 - Internet access
 - Home partition allows execution bit on filesystem
 - Have `root`/`sudo` access
+- Knowledge of environment variables, permissions and file structure
+
+### User Locations 101
+
+| Item | Location | Notes |
+|---:|:---:|:---|
+| Fonts | `~/.local/shared/fonts` | Use `fc-cache -f -v` to refresh font cache after you install new fonts |
+| Desktop Themes | `~/.local/shared/themes` |  |
+| User Binaries | `~/.local/opt` and `~/.local/bin` | Single binaries go into `bin` while others should go into `opt/${pacakge}` and package binaries symlinked to `bin`. Have your `PATH` pointed to `bin` only. |
+| Flatpak | `~/.var/app/${package}` | Flatpak installed application with the `--user` option. Use `Flatseal` if you need to expose real paths to Flatpak apps if required. |
+| Profile Settings | `~/.profile` | This is read on **login** by both `bash` and `zsh` |
+| Loutout Settings | `~/.logout` | This is read on **logout** by both `bash` and `zsh` |
+| Bash Profile Settings | `~/.bash_profile` and `~/.bash_login` | This is read on **login** by `bash`. Use `~/.profile` to simplify login process. |
+| Bash Run Commands | `~/.bashrc` | read on new terminal session by `bash` |
+| Zsh Run Commands | `~/.zshrc` | read on new terminal session by `zsh` |
 
 ### Overview
 
