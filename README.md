@@ -151,6 +151,10 @@ nvm install ${LTS_NAME}
 nvm default ${LTS_NAME}
 ```
 
+The script will try to set Run Commands into the Profile Settings. If you have both a `~/.bash*` and a `~/.profile`, it will right to the `bash` file. You want it to write to the `~/.profile` so node is set in your `PATH` at login. 
+
+You can now Go into the Cast extension settings and download the node dependancies. 
+
 ### Misc
 
 ```
