@@ -32,7 +32,9 @@ Because we will install **Gnome Shell**, **GDM** is required to get a lock scree
 ```
 sudo apt install -y \
     --no-install-recommends \
-    xorg gnome-session gnome-shell gnome-tweaks
+    xorg gnome-session gnome-shell gnome-tweak-tool \
+    nautilus \
+    seahorse seahorse-natalius
 ```
 
 ### Gnome Shell 
