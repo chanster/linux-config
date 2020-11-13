@@ -115,6 +115,7 @@ flatpak --user install ${REPO} ${APP_ID}
 | Flatseal | `flathub` | `com.github.tchx84.Flatseal` | Permission control of flatkpak installed applications |
 | BitWarden | `flathub` | `com.bitwarden.desktop` | Password Manager |
 | LibreOffice | `flathub` | `org.libreoffice.LibreOffice` | Office suite |
+| Firefox | `flathub` | `org.mozilla.firefox` | Internet Browser. You'll also need to install `org.freedesktop.Platform.ffmpeg-full` version `19.08` for stable video playback. |
 | VLC | `flathub` | `org.videolan.VLC` | Video Player |
 | Rhythmbox | `flathub` | `org.gnome.Rhythmbox3` | Music Player |
 | Krita | `flathub` | `org.kde.krita` | Photo Editor |
