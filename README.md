@@ -16,9 +16,9 @@ This document provides the pacakges installed on a new linux configuration focus
 A list of locations and paths to know about.
 
 | Item | Location | Notes |
-|---:|:---:|:---|
+|---:|:---|:---|
 | Fonts | `~/.local/shared/fonts` | Use `fc-cache -f -v` to refresh font cache after you install new fonts |
-| Desktop Themes | `~/.local/shared/themes` |  |
+| Desktop Themes | `~/.local/shared/themes` | user installed themes path |
 | User Binaries | `~/.local/opt` and `~/.local/bin` | Single binaries go into `bin` while others should go into `opt/${pacakge}` and package binaries symlinked to `bin`. Have your `PATH` pointed to `bin` only. |
 | Flatpak | `~/.var/app/${package}` | Flatpak installed application with the `--user` option. Use `Flatseal` if you need to expose real paths to Flatpak apps if required. |
 | Profile Settings | `~/.profile` | This is read on **login** by both `bash` and `zsh` |
@@ -64,9 +64,9 @@ You may restart your PC at this point or just restart the `gdm.service` to trigg
 
 #### Extensions
 
-I do not recommend using the apt packages for gnome extensions, they are almost all broken and the useful ones are not even in the apt repositories.
+I do not recommend using the apt packages for gnome extensions, they are almost all broken and the useful ones are not even in the apt repositories. Either download extensions manually or use [`cyfrost`](https://github.com/cyfrost/install-gnome-extensions) or [`brunelli`](https://github.com/brunelli/gnome-shell-extension-installer) gnome extensions installer scripts.
 
-- (Gnome Extension Website)[https://extensions.gnome.org/]
+- [Gnome Extension Website](https://extensions.gnome.org/)
 
 Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`. The `${UUID}` can be found in the extension's `metadata.yml` file.
 
@@ -113,10 +113,15 @@ flatpak --user install ${REPO} ${APP_ID}
 | App | Repo | ID | Notes |
 |:---:|:---:|:---|:---|
 | Flatseal | `flathub` | `com.github.tchx84.Flatseal` | Permission control of flatkpak installed applications |
+| BitWarden | `flathub` | `com.bitwarden.desktop` | Password Manager |
 | LibreOffice | `flathub` | `org.libreoffice.LibreOffice` | Office suite |
 | VLC | `flathub` | `org.videolan.VLC` | Video Player |
+| Rhythmbox | `flathub` | `org.gnome.Rhythmbox3` | Music Player |
 | Krita | `flathub` | `org.kde.krita` | Photo Editor |
 | Lutris | `flathub-beta` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
+
+- For applications that need to access network shares, use Flatseal to permit access.
+- Steam may require access to devices in the the `/dev` directory for game controller access, which can be permited via Flatseal.
 
 ### CLI Tools
 
@@ -124,7 +129,7 @@ All CLI tools is to be installed in `~/.loca/opt` or `~/.local/bin`. Add `bin` t
 
 ```
 if [ -d ${HOME}/.local/bin ]; do
-    PATH="${HOME}/.local/bin;${PATH}"
+    PATH="${HOME}/.local/bin:${PATH}"
 fi
 ```
 
@@ -136,13 +141,13 @@ apt install -y zsh
 
 Use Oh-my-zsh for collaborative configuration.
 
-### Nove Version Manger (nvm)
+### Node Version Manger (nvm)
 
 Ubuntu comes with an old version of Node and does not follow the node convensions because of backwards compatibility with a different package also named `node`.
 
-Use the (official documentation)[https://github.com/nvm-sh/nvm] to install `nvm`.
+Use the [official documentation](https://github.com/nvm-sh/nvm) to install `nvm`.
 
-Once installed, setup the default node to the current LTS
+Once installed, setup the default node to the [current LTS](https://nodejs.org/en/about/releases/).
 
 ```
 nvm ls-remote --lts
@@ -189,3 +194,4 @@ sudo apt --purge -y snapd
 ```
 sudoa apt remove --purge -y \
     mdadm byobu screen
+```
