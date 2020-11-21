@@ -122,7 +122,7 @@ flatpak --user install ${REPO} ${APP_ID}
 | Lutris | `flathub-beta` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
 
 - For applications that need to access network shares, use Flatseal to permit access.
-- Steam may require access to devices in the the `/dev` directory for game controller access, which can be permited via Flatseal.
+- Steam requires [additional `udev` rules](https://github.com/ValveSoftware/steam-devices) that must be added manually when using flatpak.
 
 ### CLI Tools
 
