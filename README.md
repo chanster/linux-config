@@ -120,12 +120,15 @@ flatpak --user install ${REPO} ${APP_ID}
 |:---:|:---:|:---|:---|
 | Flatseal | `flathub` | `com.github.tchx84.Flatseal` | Permission control of flatkpak installed applications |
 | BitWarden | `flathub` | `com.bitwarden.desktop` | Password Manager |
+| Gnome Calcultor | `flathub` | `org.gnome.Calculator` | Standard calculator |
+| GNU Octave | `flathub` | `org.octave.Octave` | Numerical computation (FOSS version of MATLAB) |
 | LibreOffice | `flathub` | `org.libreoffice.LibreOffice` | Office suite |
-| Firefox | `flathub` | `org.mozilla.firefox` | Internet Browser. You'll also need to install `org.freedesktop.Platform.ffmpeg-full` version `19.08` for stable video playback. |
+| Firefox | `flathub` | `org.mozilla.firefox` | Internet Browser. You'll also need to install `org.freedesktop.Platform.ffmpeg-full` version for stable video playback. |
 | VLC | `flathub` | `org.videolan.VLC` | Video Player |
-| Rhythmbox | `flathub` | `org.gnome.Rhythmbox3` | Music Player |
+| Rhythmbox | `flathub` | `org.gnome.Rhythmbox3` | Music Player. If you have network shared media, you'll want to whitelist access via **Flatseal**. |
 | Krita | `flathub` | `org.kde.krita` | Photo Editor |
-| Lutris | `flathub-beta` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
+| Lutris | `flathub-beta` | `net.lutris.Lutris` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
+| Steam | `flathub` | `com.valvesoftware.Steam` | Gaming distribution service |
 
 - For applications that need to access network shares, use Flatseal to permit access.
 - Steam requires [additional `udev` rules](https://github.com/ValveSoftware/steam-devices) that must be added manually when using flatpak.
