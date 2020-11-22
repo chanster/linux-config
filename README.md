@@ -57,10 +57,15 @@ Now install other packages to get a good basic desktop.
 ```
 sudo apt install -y \
     xorg gnome-session \
-    gnome-tweak-tool nautilus seahorse seahorse-natalius
+    gnome-tweak-tool nautilus file-roller seahorse seahorse-natalius
 ```
 
-You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**.
+You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since GNome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
+
+Edit `~/.config/mimeapps.list and add the following under `[Added Associations]`
+```
+application/x-compressed-tar=org.gnome.FileRoller.desktop; 
+```
 
 #### Extensions
 
