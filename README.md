@@ -205,3 +205,17 @@ sudo apt --purge -y snapd
 sudoa apt remove --purge -y \
     mdadm byobu screen
 ```
+
+### Speed up startup
+
+Don't wait on network to be up.
+```
+sudo systemctl disable NetworkManager-wait-online.service
+```
+Since we don't wait for network, we don't want to trigger the apt package checking.
+```
+sudo systemctl disable apt-daily.service
+sudo systemctl disable apt-daily-upgrade.service
+sudo systemctl disable apt-daily.timer
+sudo systemctl disable apt-daily-upgrade.timer
+```
