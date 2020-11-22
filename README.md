@@ -62,7 +62,8 @@ sudo apt install -y \
 
 You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since GNome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
 
-Edit `~/.config/mimeapps.list and add the following under `[Added Associations]`
+Edit `~/.config/mimeapps.list` and add the following under `[Added Associations]`
+
 ```
 application/x-compressed-tar=org.gnome.FileRoller.desktop; 
 ```
