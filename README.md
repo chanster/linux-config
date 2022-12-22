@@ -97,6 +97,7 @@ Removes `pipewire-media-session` and installs the complete PipeWire solution.
 sudo apt install \
     libspa-0.2-bluetooth \
     pipewire-audio-client-libraries \
+    bluez \
     wireplumber \
     pipewire-media-session- \
 ```
@@ -104,6 +105,26 @@ sudo apt install \
 Enable the service
 ```
 systemctl --user --now enable wireplumber.service
+```
+
+### Network
+
+```
+sudo apt install network-manager network-manager-gnome
+```
+
+Set renderer in `/etc/netplan/00-network-manager.yaml`.
+
+```
+network:
+  version: 2
+  renderer: NetworkManager
+```
+
+Disable any other netplan configurations as needed, then `apply` the changes.
+
+```
+sudo netplan apply
 ```
 
 ## Application Management
