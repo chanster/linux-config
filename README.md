@@ -57,7 +57,7 @@ Now install other packages to get a good basic desktop.
 ```
 sudo apt install -y \
     xorg gnome-session \
-    gnome-tweak-tool nautilus file-roller seahorse seahorse-natalius
+    gnome-tweaks gnome-shell-extension-prefs gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius
 ```
 
 You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since GNome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
@@ -90,6 +90,21 @@ You can get the version of **Gnome Shell** you are running with `gnome-shell --v
 | Bluetooth quick connect | Connect to bluetooth devices right from top bar. |
 | Cast to tv | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
 | Cast to tv - desktop stream add-on | Add-on to allow you yo cast your desktop. |
+
+### PipeWire
+Removes `pipewire-media-session` and installs the complete PipeWire solution.
+```
+sudo apt install \
+    libspa-0.2-bluetooth \
+    pipewire-audio-client-libraries \
+    wireplumber \
+    pipewire-media-session- \
+```
+
+Enable the service
+```
+systemctl --user --now enable wireplumber.service
+```
 
 ## Application Management
 
