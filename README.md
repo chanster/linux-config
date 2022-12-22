@@ -57,7 +57,7 @@ Now install other packages to get a good basic desktop.
 ```
 sudo apt install -y \
     xorg gnome-session \
-    gnome-tweaks gnome-shell-extension-prefs gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius
+    gnome-tweaks gnome-shell-extension-prefs gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius adwaita-icon-theme-full
 ```
 
 You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since GNome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
