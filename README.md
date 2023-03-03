@@ -165,6 +165,7 @@ flatpak --user install ${REPO} ${APP_ID}
 | Krita | `flathub` | `org.kde.krita` | Photo Editor |
 | Lutris | `flathub-beta` | `net.lutris.Lutris` | Gaming Frontend, note review the `documentation` for required dependancices that do not install with the package. |
 | Steam | `flathub` | `com.valvesoftware.Steam` | Gaming distribution service |
+| VS Code | `flathub` | `com.visualstudio.code` | [Integrated Terminal](https://github.com/flathub/com.visualstudio.code#use-host-shell-in-the-integrated-terminal)<br/>[Suppoer Language Extensions](https://github.com/flathub/com.visualstudio.code#support-for-language-extension)
 
 - For applications that need to access network shares, use Flatseal to permit access.
 - Steam requires [additional `udev` rules](https://github.com/ValveSoftware/steam-devices) that must be added manually when using flatpak.
