@@ -17,8 +17,8 @@ A list of locations and paths to know about.
 
 | Item | Location | Notes |
 |---:|:---|:---|
-| Fonts | `~/.local/shared/fonts` | Use `fc-cache -f -v` to refresh font cache after you install new fonts |
-| Desktop Themes | `~/.local/shared/themes` | user installed themes path |
+| Fonts | `~/.local/share/fonts` | Use `fc-cache -f -v` to refresh font cache after you install new fonts |
+| Desktop Themes | `~/.local/share/themes` | user installed themes path |
 | User Binaries | `~/.local/opt` and `~/.local/bin` | Single binaries go into `bin` while others should go into `opt/${pacakge}` and package binaries symlinked to `bin`. Have your `PATH` pointed to `bin` only. |
 | Flatpak | `~/.var/app/${package}` | Flatpak installed application with the `--user` option. Use `Flatseal` if you need to expose real paths to Flatpak apps if required. |
 | Profile Settings | `~/.profile` | This is read on **login** by both `bash` and `zsh` |
@@ -49,18 +49,17 @@ sudo apt install --no-install-recommends -y gdm3
 Install just the base **Gnome Shell** without all the extras.
 
 ```
-sudo apt install -y --no-install-recommends gnome-shell
+sudo apt install -y --no-install-recommends gnome-shell gnome-control-center
 ```
 
 Now install other packages to get a good basic desktop.
 
 ```
 sudo apt install -y \
-    xorg gnome-session \
-    gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius adwaita-icon-theme-full xserver-xorg-input-all
+    gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius adwaita-icon-theme-full xserver-xorg-input-all
 ```
 
-You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since GNome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
+You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since Gnome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
 
 Edit `~/.config/mimeapps.list` and add the following under `[Added Associations]`
 
@@ -78,18 +77,18 @@ Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`. The `${U
 
 You can get the version of **Gnome Shell** you are running with `gnome-shell --version`.
 
-| Extension | Notes |
-|---:|:---|
-| User themes | Allows user themes in in `~/.local/share/themes`. |
-| Top indicator app | App notifications in top bar. |
-| Dash to Dock | OSX like application dock. |
-| Hide top bar | Allow top bar to hide. |
-| Openweather | Weather in the top bar. |
-| Screenshot tool | Screenshot via a top bar dropdown. |
-| Sound Input & output device chooser | Switch audio devices right from top bar. |
-| Bluetooth quick connect | Connect to bluetooth devices right from top bar. |
-| Cast to tv | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
-| Cast to tv - desktop stream add-on | Add-on to allow you yo cast your desktop. |
+| Extension | UUID | Notes |
+|---:|:---:|:---|
+| User themes | | Allows user themes in in `~/.local/share/themes`. |
+| Top indicator app | | App notifications in top bar. |
+| Dash to Dock | | OSX like application dock. |
+| Hide top bar | | Allow top bar to hide. |
+| Openweather | | Weather in the top bar. |
+| Screenshot tool | | Screenshot via a top bar dropdown. |
+| Sound Input & output device chooser | | Switch audio devices right from top bar. |
+| Bluetooth quick connect | | Connect to bluetooth devices right from top bar. |
+| Cast to tv | | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
+| Cast to tv - desktop stream add-on | | Add-on to allow you yo cast your desktop. |
 
 ### PipeWire
 Removes `pipewire-media-session` and installs the complete PipeWire solution.
