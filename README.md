@@ -255,3 +255,9 @@ sudo systemctl disable apt-daily-upgrade.service
 sudo systemctl disable apt-daily.timer
 sudo systemctl disable apt-daily-upgrade.timer
 ```
+
+### nVidia Drivers
+When installing graphics drivers, include the vulkan library to support the apps that use vulkan for rendering.
+```
+sudo apt install nvidia-driver-NNN libvulkan1
+```
