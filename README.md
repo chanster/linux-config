@@ -185,51 +185,32 @@ fi
 apt install -y zsh
 ```
 
-Use Oh-my-zsh for collaborative configuration.
-
-### Node Version Manger (nvm)
-
-Ubuntu comes with an old version of Node and does not follow the node convensions because of backwards compatibility with a different package also named `node`.
-
-Use the [official documentation](https://github.com/nvm-sh/nvm) to install `nvm`.
-
-Once installed, setup the default node to the [current LTS](https://nodejs.org/en/about/releases/).
-
-```
-nvm ls-remote --lts
-# locate the latest LTS
-nvm install ${LTS_NAME}
-nvm default ${LTS_NAME}
-```
-
-The script will try to set Run Commands into the Profile Settings. If you have both a `~/.bash*` and a `~/.profile`, it will right to the `bash` file. You want it to write to the `~/.profile` so node is set in your `PATH` at login. 
-
-You can now Go into the Cast extension settings and download the node dependancies. 
+Use zimfw for collaborative configuration.
 
 ### Misc
 
 ```
 apt install -y \
-    unzip tmux jq
+    unzip tmux
 ```
 
 ## Remove Unneeded Packages
 
 ### Snap
 
-Personally, I believe Flatpak is a better applciation management tool. Since we don't want to use both Flatpak and Snap, we'll remove Snap.
+Personally, I believe Flatpak is a better application management tool. Since we don't want to use both Flatpak and Snap, we'll remove Snap.
 
-First we need to locate all the install packages installed with snap
+First, we need to locate all the install packages installed with snap
 ```
 snap list
 ```
 
-Remove installed packages, noting that some packages are required by others, so a for loop wouldn't necessary work.
+Remove installed packages, noting that some packages are required by others, so a for loop wouldn't necessarily work.
 ```
 sudo snap remove ${PACKAGE_NAME}
 ```
 
-Finally we remove
+Finally, we remove `snap`.
 
 ```
 sudo apt --purge -y snapd
