@@ -82,19 +82,11 @@ You can get the version of **Gnome Shell** you are running with `gnome-shell --v
 | Cast to tv - desktop stream add-on | | Add-on to allow you yo cast your desktop. |
 
 ### Audio
-Removes `pipewire-media-session` and installs the complete PipeWire solution.
-```
-sudo apt install \
-    libspa-0.2-bluetooth \
-    pipewire-audio-client-libraries \
-    bluez \
-    wireplumber \
-    pipewire-media-session- \
-```
 
-Enable the service
+Enable Wireplumber session.
+
 ```
-systemctl --user --now enable wireplumber.service
+systemctl --user --now enable wireplumber pipewire pipewire-pulse
 ```
 
 ### Network
@@ -191,18 +183,6 @@ apt install -y \
 
 Personally, I believe Flatpak is a better application management tool. Since we don't want to use both Flatpak and Snap, we'll remove Snap.
 
-First, we need to locate all the install packages installed with snap
-```
-snap list
-```
-
-Remove installed packages, noting that some packages are required by others, so a for loop wouldn't necessarily work.
-```
-sudo snap remove ${PACKAGE_NAME}
-```
-
-Finally, we remove `snap`.
-
 ```
 sudo apt --purge -y snapd
 ```
@@ -211,7 +191,7 @@ sudo apt --purge -y snapd
 
 ```
 sudoa apt remove --purge -y \
-    mdadm byobu screen
+    mdadm cloud-init
 ```
 
 ### Speed up startup
