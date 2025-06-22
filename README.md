@@ -42,14 +42,19 @@ Because we will install **Gnome Shell**, **GDM** is required to get a lock scree
 sudo apt install --no-install-recommends -y gdm3
 ```
 
+> [!NOTE]
+> On `25.04` this will also install `gnome-shell`.
+
 ## Desktop Environment
 
 Now install other packages to get a good basic desktop.
 
 ```
 sudo apt install -y \
-    less vim \
-    gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse adwaita-icon-theme-full xserver-xorg-input-all
+    less vim unzip \ # cli tools
+    fonts-noto-cjk \ # large unicode font coverage
+    xserver-xorg-input-all \ # game controller support
+    gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse adwaita-icon-theme-full \ # gnome
 ```
 
 You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since Gnome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
@@ -64,22 +69,16 @@ application/x-compressed-tar=org.gnome.FileRoller.desktop;
 
 - [Gnome Extension Website](https://extensions.gnome.org/)
 
-Install Extensions to `~/.local/share/gnome-shell/externsions/${UUID}`. The `${UUID}` can be found in the extension's `metadata.yml` file.
+Most extensions can be installed with the **Gnome Extension Manager**.
 
-You can get the version of **Gnome Shell** you are running with `gnome-shell --version`.
-
-| Extension | UUID | Notes |
-|---:|:---:|:---|
-| User themes | | Allows user themes in in `~/.local/share/themes`. |
-| Top indicator app | | App notifications in top bar. |
-| Dash to Dock | | OSX like application dock. |
-| Hide top bar | | Allow top bar to hide. |
-| Openweather | | Weather in the top bar. |
-| Screenshot tool | | Screenshot via a top bar dropdown. |
-| Sound Input & output device chooser | | Switch audio devices right from top bar. |
-| Bluetooth quick connect | | Connect to bluetooth devices right from top bar. |
-| Cast to tv | | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
-| Cast to tv - desktop stream add-on | | Add-on to allow you yo cast your desktop. |
+| Extension | Notes |
+|---:|:---|
+| User themes | Allows user themes in in `~/.local/share/themes`. |
+| Top indicator app | App notifications in top bar. |
+| Dash to Dock | OSX like application dock. |
+| Hide top bar | Allow top bar to hide. |
+| Openweather | Weather in the top bar. |
+| Quick Settings Audio Panel | Feature rich audio settings panel. |
 
 ### Audio
 
@@ -197,6 +196,7 @@ sudoa apt remove --purge -y \
 ### Speed up startup
 
 Don't wait on network to be up.
+
 ```
 sudo systemctl disable NetworkManager-wait-online.service
 ```
@@ -209,7 +209,12 @@ sudo systemctl disable apt-daily-upgrade.timer
 ```
 
 ### nVidia Drivers
+
 When installing graphics drivers, include the vulkan library to support the apps that use vulkan for rendering.
 ```
 sudo apt install nvidia-driver-NNN libvulkan1
 ```
+
+### AMD Drivers
+
+The `mesa` pacakge gets the job done.
