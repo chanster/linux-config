@@ -2,10 +2,10 @@
 
 ## Introduction
 
-This document provides the pacakges installed on a new linux configuration focused on clean, containerized desktop. I use a minimal Ubuntu server as a starting point. I install packages under my user when I can and use container technology to keep the underlying system free from pacakge bloat.
+This document provides the pacakges installed on a new linux configuration focused on clean, containerized desktop. I use a Ubuntu server as a starting point. I install packages under my user when I can and use containers to keep the underlying system free from pacakge bloat.
 
 ### Assumptions
-- Starting with a Ubuntu minimal server install
+- Starting with a Ubuntu 25.04 server install
 - Internet access
 - Home partition allows execution bit on filesystem
 - Have `root`/`sudo` access
@@ -44,19 +44,12 @@ sudo apt install --no-install-recommends -y gdm3
 
 ## Desktop Environment
 
-### Gnome Shell
-
-Install just the base **Gnome Shell** without all the extras.
-
-```
-sudo apt install -y --no-install-recommends gnome-shell gnome-control-center
-```
-
 Now install other packages to get a good basic desktop.
 
 ```
 sudo apt install -y \
-    gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse seahorse-natalius adwaita-icon-theme-full xserver-xorg-input-all
+    less vim \
+    gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse adwaita-icon-theme-full xserver-xorg-input-all
 ```
 
 You may restart your PC at this point or just restart the `gdm.service` to trigger **GDM**. Since Gnome-Shell, nautilus is the "default" for `tar` archives. When opening an archive, it auto extracts to the current directory, which I personally find inconvenient. Change the default application for archives to **File Roller** (Archive Manager). 
@@ -68,8 +61,6 @@ application/x-compressed-tar=org.gnome.FileRoller.desktop;
 ```
 
 #### Extensions
-
-I do not recommend using the apt packages for gnome extensions, they are almost all broken and the useful ones are not even in the apt repositories. Either download extensions manually or use [`cyfrost`](https://github.com/cyfrost/install-gnome-extensions) or [`brunelli`](https://github.com/brunelli/gnome-shell-extension-installer) gnome extensions installer scripts.
 
 - [Gnome Extension Website](https://extensions.gnome.org/)
 
@@ -90,7 +81,7 @@ You can get the version of **Gnome Shell** you are running with `gnome-shell --v
 | Cast to tv | | Allow Cast protocol. This requires `node`, See `nvm` install below to use user installed node. **DO NOT** follow the official instructions tell you to override an `apt` install with a `pip` install. |
 | Cast to tv - desktop stream add-on | | Add-on to allow you yo cast your desktop. |
 
-### PipeWire
+### Audio
 Removes `pipewire-media-session` and installs the complete PipeWire solution.
 ```
 sudo apt install \
