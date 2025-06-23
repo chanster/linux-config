@@ -54,6 +54,7 @@ sudo apt install -y \
     less vim unzip \ # cli tools
     fonts-noto-cjk \ # large unicode font coverage
     xserver-xorg-input-all \ # game controller support
+    libfuse2t64 \ # appImages support
     gnome-session gnome-tweaks gnome-shell-extension-manager nautilus file-roller seahorse adwaita-icon-theme-full \ # gnome
 ```
 
@@ -121,13 +122,9 @@ sudo apt install -y flatpak
 We add both the stable and beta repositories
 
 ```bash
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
 ```
-
-#### Flatpak Applications
-
-Install all applications with the `--user` option.
 
 ```
 flatpak --user install ${REPO} ${APP_ID}
@@ -153,7 +150,7 @@ flatpak --user install ${REPO} ${APP_ID}
 
 ### CLI Tools
 
-All CLI tools is to be installed in `~/.loca/opt` or `~/.local/bin`. Add `bin` to your `PATH` in `~/.profiles`.
+All CLI tools are to be installed in `~/.loca/opt` or `~/.local/bin`. Add `bin` to your `PATH` in `~/.profiles`.
 
 ```
 if [ -d ${HOME}/.local/bin ]; do
@@ -218,3 +215,19 @@ sudo apt install nvidia-driver-NNN libvulkan1
 ### AMD Drivers
 
 The `mesa` pacakge gets the job done.
+
+## AppImage
+
+Create AppArmor rules to allow specific AppImages to run.
+
+```shell
+abi <abi/4.0>,
+include <tunables/global>
+
+profile yourappname /app/dir/appname.appimage flags=(default_allow) {
+  userns,
+
+  # Site-specific additions and overrides. See local/README for details.
+  include if exists <local/yourappname>
+}
+```
